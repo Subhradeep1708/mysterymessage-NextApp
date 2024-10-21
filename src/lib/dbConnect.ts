@@ -8,7 +8,8 @@ type ConnectionObject = {
 const connection: ConnectionObject = {}  
 
 
-// database connection
+// database connection (Promise return <void> -> means we don't care whats inside )
+
 async function dbConnect(): Promise<void> {
     //multiple times db connect na ho jisse performance could choke
     if (connection.isConnected) {
@@ -16,13 +17,14 @@ async function dbConnect(): Promise<void> {
         return;
     }
 
+    // if db was not connected
     try {
         const db = await mongoose.connect(process.env.MONGODB_URI || '', {})
         console.log(db);
-
-
+        
+        
         connection.isConnected = db.connections[0].readyState
-
+        console.log(db.connections);
         console.log("DB Connected Succesfully");
 
     } catch (error) {
