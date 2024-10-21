@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 
-// only the username is verified here
+// only the username is verified here(Only one object so z.)
 export const usernameValidation =
     z
         .string()
@@ -15,4 +15,4 @@ export const signUpValidation = z.object({
     username: usernameValidation,
     email: z.string().email({ message: 'Invalid email address' }),
     password:z.string().min(6,{message: 'password must be atleast 6 characters'})
-})     
+})      

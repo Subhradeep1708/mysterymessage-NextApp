@@ -5,7 +5,7 @@ import mongoose, { Schema, Document } from 'mongoose'
 
 export interface Message extends Document {
 
-    content: string;
+    content: string; // In Ts string is small 's'
     createdAt: Date;
 }   
 
@@ -41,7 +41,7 @@ const UserSchema: Schema<User> = new Schema({
     username: {
         type: String,
         required: [true, "Username is required"],
-        trim: true,
+        trim: true, //spaces removed
         unique: true
     },
     email: {
@@ -73,7 +73,7 @@ const UserSchema: Schema<User> = new Schema({
     messages: [MessageSchema]
 })
 
-// MORMAL BACKEND ME EKBAR SAB SCHEMA WAGERA CREATE HO JATA HAI BUT NEXT RUNS EDGE CASE IT DOES'NT KNOW IF THE MODEL IS CREATED OR NOT ==> BOTH CASES CHECKED ==> () || ()
+// MORMAL BACKEND ME EKBAR SAB SCHEMA WAGERA CREATE HO JATA HAI BUT NEXT RUNS EDGE CASE IT DOES'NT KNOW IF THE MODEL IS CREATED OR NOT ==> BOTH CASES CHECKED ==> (Pehle se bana hua hai) || (New model create hua hai)
 
 const UserModel = (mongoose.models.User as mongoose.Model<User>) || mongoose.model<User>("User", UserSchema)
 
