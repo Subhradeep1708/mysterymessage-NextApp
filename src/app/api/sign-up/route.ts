@@ -55,7 +55,7 @@ export async function POST(request: Request) {
       // password hashing and setting a expiry time for verifyCode
       const hashedPassword = await bcrypt.hash(password, 10);
       const expiryDate = new Date();
-      expiryDate.setHours(expiryDate.getHours() + 1);//otp expiry 1hr
+      expiryDate.setHours(expiryDate.getHours() + 1); //otp expiry 1hr
 
       // creating User in the db
       const newUser = new UserModel({
