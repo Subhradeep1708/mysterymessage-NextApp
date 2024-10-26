@@ -13,6 +13,7 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
+      //we have to write authorize func on our own as it is custom login
       async authorize(credentials: any): Promise<any> {
         //connecting to db as next runs on edge case
         await dbConnect();
