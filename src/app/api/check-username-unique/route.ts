@@ -22,9 +22,9 @@ export async function GET(request: Request) {
     };
 
     //validation with zod
-    const result = UsernameQuerySchema.safeParse(queryParam); //safeparse - if safely parsed the we'll get data otherwise not
+    const result = UsernameQuerySchema.safeParse(queryParam); //safeparse - if safely parsed then we'll get data otherwise not
 
-    console.log(result); //TODO: remove
+    // console.log(result); //TODO: remove
     if (!result.success) {
       const usernameErrors = result.error.format().username?._errors || [];
       return Response.json(
